@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="ru"><head>
+  <!-- Подставляется из `flutter build web --base-href`. -->
+  <base href="/cosmos-web/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="COSMOS — разбор личности по дате рождения: Число Души, Судьбы и энергия дня.">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+  <meta name="theme-color" content="#0B0B1A">
+
+  <!-- iPhone: «На экран Домой» открывает приложение без панелей Safari. -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="COSMOS">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <title>COSMOS</title>
+  <link rel="manifest" href="manifest.json">
+  <style id="splash-screen-style">
+    html, body {
+      height: 100%;
+      margin: 0;
+      background-color: #0B0B1A;
+      overscroll-behavior: none;
+    }
+
+    /* Flutter читает отсюда отступы под вырез и полоску «Домой» (safe_area_web.dart). */
+    #safe-area {
+      position: fixed;
+      visibility: hidden;
+      pointer-events: none;
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    }
+
+    .center {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+  </style>
+  <script id="splash-screen-script">
+    function removeSplashFromWeb() {
+      document.getElementById("splash")?.remove();
+      document.getElementById("splash-branding")?.remove();
+    }
+  </script>
+</head>
+<body>
+  <div id="safe-area"></div>
+  <picture id="splash">
+      <source srcset="splash/img/light-1x.png 1x, splash/img/light-2x.png 2x, splash/img/light-3x.png 3x, splash/img/light-4x.png 4x" media="(prefers-color-scheme: light)">
+      <source srcset="splash/img/dark-1x.png 1x, splash/img/dark-2x.png 2x, splash/img/dark-3x.png 3x, splash/img/dark-4x.png 4x" media="(prefers-color-scheme: dark)">
+      <img class="center" aria-hidden="true" src="splash/img/light-1x.png" alt="">
+  </picture>
+  <script src="flutter_bootstrap.js" async=""></script>
+</body></html>
